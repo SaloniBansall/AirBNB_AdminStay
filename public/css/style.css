@@ -1,0 +1,118 @@
+body{
+    /* background-color: pink; */
+    min-height:100vh;
+}
+.container{
+    flex:1;
+}
+
+.navbar{
+    height:5rem;
+    background-color: white;
+}
+.fa-compass{
+    color:red;
+    font-size: 2rem;
+}
+.nav-link{
+    color:#222222 !important;
+}
+/* footer */
+.f-info-links a{
+text-decoration: none;
+color:#222222;
+margin-bottom:1rem;
+}
+.f-info-links a:hover{
+    text-decoration: underline;
+    
+    }
+.f-info-links, .f-info-socials, .f-info-brand{
+    width:100%;
+    display:flex;
+    align-items: center;
+    vertical-align: middle;
+    justify-content: center;
+}
+
+.f-info-socials i{
+    font-size: 1.2rem;
+    margin-right: 1.5rem;
+    margin-top:1rem;
+}
+    .f-info{
+        text-align: center;
+        height:8rem;
+        background-color: hwb(353 91% 6%);
+        display:flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: space-evenly;
+    }
+
+/* cards */
+.card{
+    border:none !important;
+    margin-bottom: 2rem;
+}
+.card-img-top{
+    border-radius: 1rem !important;
+    width:100% !important;
+    object-fit: cover !important;
+}
+.card-body{
+    padding:0 !important;
+    margin-top:1rem !important;
+}
+.card-text p{
+    font-weight: 400 !important;
+    margin-top:1rem !important;
+
+}
+.listing-link{
+    text-decoration: none !important;
+}
+/* Card effect */
+
+.card-img-overlay {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+}
+.card:hover{
+    opacity:0.9;
+    background-color: white;
+}
+
+.heart-icon {
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
+.heart-icon.red {
+    color: red;
+}
+.new-btn{
+    background-color: #f34545 !important;
+    border:none !important;
+}
+.edit-btn{
+    background-color: #f34545 !important;
+    border:none !important;
+
+}
+/* show page */
+.show-image{
+    height:30vh;
+
+}
+.btns{
+    display:flex;
+
+}
+.show-card{
+    padding-left: 0;
+    padding-right: 0;
+}
