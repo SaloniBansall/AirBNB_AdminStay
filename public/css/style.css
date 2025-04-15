@@ -51,7 +51,7 @@ margin-bottom:1rem;
     }
 
 /* cards */
-.card{
+.listing-card{
     border:none !important;
     margin-bottom: 2rem;
 }
@@ -115,4 +115,8 @@ margin-bottom:1rem;
 .show-card{
     padding-left: 0;
     padding-right: 0;
+}
+.alert-danger {
+    background-color: #f8d7da !important;
+    color: #721c24 !important;
 }
