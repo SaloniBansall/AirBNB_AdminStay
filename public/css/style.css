@@ -120,3 +120,9 @@ margin-bottom:1rem;
     background-color: #f8d7da !important;
     color: #721c24 !important;
 }
+
+/* Map */
+#map { 
+    height:400px;
+    width:80vh;
+}
