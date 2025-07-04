@@ -59,16 +59,19 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 
-main().then(()=>{
+if (!dbUrl) {
+    console.error("MongoDB connection string is not defined. Check your .env file and ATLASDB_URL variable.");
+    process.exit(1);
+}
+
+main().then(() => {
     console.log("connected to db");
-})
-.catch((err)=>{
-    console.log(err);
+}).catch((err) => {
+    console.error("MongoDB connection error:", err);
+    process.exit(1);
 });
 
-// const dbUrl=process.env.ATLASDB_URL || MONGO_URL;
-
-async function main(){
+async function main() {
     await mongoose.connect(dbUrl); // connect with mongo
 }
 
