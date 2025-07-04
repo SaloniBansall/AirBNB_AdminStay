@@ -18,6 +18,18 @@ router.route("/")
 //new route
 router.get("/new",isLoggedIn,listingController.renderNewForm);
 
+//search route
+
+router.get('/search', async (req, res) => {
+    const query = req.query.q;
+    if (!query) return res.redirect('/listings');
+
+    const regex = new RegExp(query, 'i');
+    const filteredListings = await Listing.find({ title: { $regex: regex } });    // $or: [{ title: { $regex: regex } },{ location: { $regex: regex } } can use this if want to search by location also
+
+    res.render('listings/index', { allListings: filteredListings }); // ✅ Correct name
+});
+
 
 router.route("/:id")
 .get(wrapAsync(listingController.showListing))
@@ -43,5 +55,8 @@ router.get("/:id/edit",isLoggedIn,isOwner, wrapAsync(listingController.editForm)
 
 //delete route
 // router.delete("/:id",isLoggedIn,isOwner,wrapAsync(listingController.destroyListing));
+
+// search route 
+
 
 module.exports=router;

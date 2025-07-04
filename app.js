@@ -21,14 +21,14 @@ const passport=require("passport");
 const localStrategy=require("passport-local");
 const User=require("./models/user.js");
 
-const dbUrl=process.env.ATLASDB_URL || MONGO_URL; 
+const dbUrl= process.env.ATLASDB_URL || MONGO_URL; 
 
 const store=mongoStore.create({
     mongoUrl:dbUrl,
     crypto:{
         secret:process.env.SECRET
     },
-    touchAfter:24*3600, 
+    touchAfter:24*3600,
 })
 
 store.on("error",()=>{
@@ -37,7 +37,7 @@ store.on("error",()=>{
 
 const sessionOptions={
     store:store,
-    secret:"mysupersecretcode",
+    secret:process.env.SECRET,
     resave:false,
     saveUninitialized:true,
     cookie:{
@@ -66,7 +66,7 @@ main().then(()=>{
     console.log(err);
 });
 
-// const dbUrl=process.env.ATLASDB_URL || MONGO_URL; 
+// const dbUrl=process.env.ATLASDB_URL || MONGO_URL;
 
 async function main(){
     await mongoose.connect(dbUrl); // connect with mongo
