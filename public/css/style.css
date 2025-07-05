@@ -103,6 +103,15 @@ margin-bottom:1rem;
     border:none !important;
 
 }
+.book-btn{
+    background-color: hsl(189, 88%, 61%) !important;
+    border:none !important;
+    height:3rem !important;
+    width:9rem !important;
+    color:white !important;
+    margin-top:1rem !important;
+    
+}
 /* show page */
 .show-image{
     height:30vh;

@@ -21,6 +21,9 @@ const passport=require("passport");
 const localStrategy=require("passport-local");
 const User=require("./models/user.js");
 
+const bookingRouter = require("./routes/bookingRoute.js");
+
+
 const dbUrl= process.env.ATLASDB_URL || MONGO_URL; 
 
 const store=mongoStore.create({
@@ -127,6 +130,7 @@ app.get("/demoUser",async (req,res)=>{
 app.use("/listings",listingRouter);
 app.use("/listings/:id/reviews",reviewRouter);
 app.use("/",userRouter);
+app.use("/listings/:id", bookingRouter);
 
 // app.get("/listings",wrapAsync(async (req,res)=>{
 //     const allListings=await Listing.find({});

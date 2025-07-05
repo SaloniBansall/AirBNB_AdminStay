@@ -20,9 +20,14 @@
             <p class="card-text"><%=listing.country %></p>
             <!-- <%=listing.image %><br> -->
         </div>
+        <a href="/listings/<%= listing._id %>/book" class="btn text-center book-btn ">Book Now</a>
     </div>
     <br><br>
-    <% if(currUser){ %>}
+
+    <br><br>
+    <!-- extra line added -->
+
+    <% if(currUser){ %>
     <div class="btns mb-4">
 
         <a href="/listings/<%=listing._id %>/edit" class="btn btn-dark col-1 offset-3 edit-btn">Edit</a>

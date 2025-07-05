@@ -1,0 +1,34 @@
+<!-- Add inside listing detail page -->
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow p-4">
+        <h2 class="mb-4 text-center">Booking Request for <%= listing.title %></h2>
+        <form action="/listings/<%= listing._id %>/book" method="POST">
+          <div class="mb-3">
+            <label for="name" class="form-label">Your Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required />
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="form-label">Your Phone</label>
+            <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter your phone number" required />
+          </div>
+          <div class="mb-3">
+            <label for="guests" class="form-label">Number of People</label>
+            <input type="number" class="form-control" id="guests" name="guests" placeholder="How many guests?" required />
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Optional Message</label>
+            <textarea class="form-control" id="message" name="message" placeholder="Add a message (optional)"></textarea>
+          </div>
+          <div class="text-center">
+            <button class="btn btn-primary px-5">Submit Booking</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
