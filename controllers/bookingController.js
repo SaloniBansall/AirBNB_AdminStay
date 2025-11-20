@@ -3,7 +3,7 @@ const nodemailer = require("nodemailer");
 
 module.exports.renderBookingForm = async (req, res) => {
   const listing = await Listing.findById(req.params.id);
-  res.render("listings/book.ejs", { listing });
+  return res.render("listings/book.ejs", { listing });  // ✅ Added return
 };
 
 module.exports.sendBookingRequest = async (req, res) => {
@@ -40,5 +40,5 @@ module.exports.sendBookingRequest = async (req, res) => {
   });
 
   req.flash("success", "Booking request sent to the owner!");
-  res.redirect(`/listings/${req.params.id}`);
+  return res.redirect(`/listings/${req.params.id}`);  // ✅ Added return
 };

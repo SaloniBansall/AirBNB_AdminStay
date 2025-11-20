@@ -20,15 +20,17 @@ router.get("/new",isLoggedIn,listingController.renderNewForm);
 
 //search route
 
-router.get('/search', async (req, res) => {
+router.get('/search', wrapAsync(async (req, res) => {
     const query = req.query.q;
-    if (!query) return res.redirect('/listings');
+    if (!query) {
+        return res.redirect('/listings');
+    }
 
     const regex = new RegExp(query, 'i');
-    const filteredListings = await Listing.find({ title: { $regex: regex } });    // $or: [{ title: { $regex: regex } },{ location: { $regex: regex } } can use this if want to search by location also
+    const filteredListings = await Listing.find({ title: { $regex: regex } });
 
-    res.render('listings/index', { allListings: filteredListings }); // ✅ Correct name
-});
+    return res.render('listings/index', { allListings: filteredListings });
+}));
 
 
 router.route("/:id")

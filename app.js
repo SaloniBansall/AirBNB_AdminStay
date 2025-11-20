@@ -26,13 +26,11 @@ const bookingRouter = require("./routes/bookingRoute.js");
 
 const dbUrl= process.env.ATLASDB_URL || MONGO_URL; 
 
-const store=mongoStore.create({
-    mongoUrl:dbUrl,
-    crypto:{
-        secret:process.env.SECRET
-    },
-    touchAfter:24*3600,
-})
+const store = mongoStore.create({
+    mongoUrl: dbUrl,
+    secret: process.env.SECRET,
+    touchAfter: 24 * 3600
+});
 
 store.on("error",()=>{
     console.log("session store error");
@@ -60,6 +58,12 @@ passport.use(new localStrategy(User.authenticate())); // pbkdf2 hasging algo is 
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+app.use((req,res,next)=>{
+    res.locals.success=req.flash("success");
+    res.locals.error=req.flash("error");
+    res.locals.currUser=req.user;
+    next();
+})
 
 
 if (!dbUrl) {
@@ -111,12 +115,12 @@ app.get("/",(req,res)=>{
 
 // };
 
-app.use((req,res,next)=>{
-    res.locals.success=req.flash("success");
-    res.locals.error=req.flash("error");
-    res.locals.currUser=req.user;
-    next();
-})
+// app.use((req,res,next)=>{
+//     res.locals.success=req.flash("success");
+//     res.locals.error=req.flash("error");
+//     res.locals.currUser=req.user;
+//     next();
+// })
 
 app.get("/demoUser",async (req,res)=>{
     let fakeUser=new User({
